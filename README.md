@@ -2,7 +2,9 @@
 
 > Plataforma open-source para salvar, organizar e compartilhar code snippets com syntax highlighting server-side e explicação por IA.
 
-**Live:** [snippets.catiteo.com](https://snippets.catiteo.com) · **Repositório:** [github.com/thiago-tap/snippets-platform](https://github.com/thiago-tap/snippets-platform)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-snippets.catiteo.com-6366f1?style=for-the-badge)](https://snippets.catiteo.com/)
+
+**Live:** [snippets.catiteo.com](https://snippets.catiteo.com/) · **Repositório:** [github.com/thiago-tap/snippets-platform](https://github.com/thiago-tap/snippets-platform)
 
 ![SvelteKit](https://img.shields.io/badge/SvelteKit-2.x-FF3E00?logo=svelte&logoColor=white)
 ![Svelte](https://img.shields.io/badge/Svelte-5_(runes)-FF3E00?logo=svelte&logoColor=white)
