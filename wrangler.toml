@@ -1,5 +1,4 @@
 name = "snippets-platform"
-account_id = "71856645843085993af07476d414d2cd"
 compatibility_date = "2026-02-19"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".svelte-kit/cloudflare"
