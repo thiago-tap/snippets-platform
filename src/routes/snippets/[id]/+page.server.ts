@@ -33,7 +33,9 @@ export const load: PageServerLoad = async ({ params, locals, platform }) => {
       .catch(() => {});
   }
 
-  const highlighted = await highlightCode(snippet.code, snippet.language);
+  const highlighted = await highlightCode(snippet.code, snippet.language).catch(
+    () => `<pre style="background:#0d1117;color:#e6edf3;padding:1rem;overflow-x:auto"><code>${snippet.code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`
+  );
 
   return {
     snippet: { ...snippet, tags: parseTags(snippet.tags) },
