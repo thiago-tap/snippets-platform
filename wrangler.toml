@@ -1,0 +1,18 @@
+name = "snippets-platform"
+compatibility_date = "2026-02-19"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".svelte-kit/cloudflare"
+
+[placement]
+mode = "smart"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "snippets-db"
+database_id = "SUBSTITUA_PELO_SEU_DATABASE_ID"
+
+[ai]
+binding = "AI"
+
+[vars]
+APP_URL = "https://snippets.catiteo.com"
