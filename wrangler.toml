@@ -1,4 +1,5 @@
 name = "snippets-platform"
+account_id = "71856645843085993af07476d414d2cd"
 compatibility_date = "2026-02-19"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".svelte-kit/cloudflare"
@@ -9,7 +10,7 @@ mode = "smart"
 [[d1_databases]]
 binding = "DB"
 database_name = "snippets-db"
-database_id = "SUBSTITUA_PELO_SEU_DATABASE_ID"
+database_id = "fe97dc9c-1615-47ee-b6f5-10f44faa84df"
 
 [ai]
 binding = "AI"
