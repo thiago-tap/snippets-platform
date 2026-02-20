@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { untrack } from 'svelte';
   import { enhance } from '$app/forms';
   import { AlertCircle } from 'lucide-svelte';
   import { LANGUAGES } from '$lib/utils';
@@ -6,12 +7,13 @@
 
   let { data, form }: { data: PageData; form: ActionData } = $props();
 
-  let title = $state(data.snippet.title);
-  let code = $state(data.snippet.code);
-  let language = $state(data.snippet.language);
-  let description = $state(data.snippet.description ?? '');
-  let tagsRaw = $state(data.snippet.tags.join(', '));
-  let isPublic = $state(data.snippet.isPublic);
+  // Intentional one-time initialization from server data
+  let title = $state(untrack(() => data.snippet.title));
+  let code = $state(untrack(() => data.snippet.code));
+  let language = $state(untrack(() => data.snippet.language));
+  let description = $state(untrack(() => data.snippet.description ?? ''));
+  let tagsRaw = $state(untrack(() => data.snippet.tags.join(', ')));
+  let isPublic = $state(untrack(() => data.snippet.isPublic));
   let submitting = $state(false);
 </script>
 
@@ -57,9 +59,9 @@
         </select>
       </div>
       <div>
-        <label class="block text-sm font-medium text-zinc-300 mb-1.5">Visibilidade</label>
-        <label class="flex items-center gap-3 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2.5 cursor-pointer hover:border-zinc-600 transition-colors">
-          <input type="checkbox" name="is_public" bind:checked={isPublic} class="w-4 h-4 rounded accent-indigo-500" />
+        <span class="block text-sm font-medium text-zinc-300 mb-1.5">Visibilidade</span>
+        <label for="is_public_edit" class="flex items-center gap-3 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2.5 cursor-pointer hover:border-zinc-600 transition-colors">
+          <input id="is_public_edit" type="checkbox" name="is_public" bind:checked={isPublic} class="w-4 h-4 rounded accent-indigo-500" />
           <span class="text-sm text-zinc-300">{isPublic ? 'Público' : 'Privado'}</span>
         </label>
       </div>

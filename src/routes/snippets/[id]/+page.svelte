@@ -6,7 +6,7 @@
 
   let { data }: { data: PageData } = $props();
 
-  const lang = getLanguage(data.snippet.language);
+  const lang = $derived(getLanguage(data.snippet.language));
 
   let copied = $state(false);
   let explaining = $state(false);
@@ -45,10 +45,10 @@
 
 <div class="max-w-4xl mx-auto px-4 py-8">
   <!-- Back -->
-  <a href="javascript:history.back()" class="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-6">
+  <button onclick={() => history.back()} class="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-6">
     <ArrowLeft class="w-4 h-4" />
     Voltar
-  </a>
+  </button>
 
   <!-- Header -->
   <div class="mb-6">

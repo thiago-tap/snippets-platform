@@ -20,7 +20,7 @@
     };
   } = $props();
 
-  const lang = getLanguage(snippet.language);
+  const lang = $derived(getLanguage(snippet.language));
 </script>
 
 <a href="/snippets/{snippet.id}" class="block group h-full">

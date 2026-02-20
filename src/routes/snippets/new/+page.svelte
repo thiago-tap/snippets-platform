@@ -6,13 +6,25 @@
 
   let { form }: { form: ActionData } = $props();
 
-  let title = $state((form?.title as string) ?? '');
-  let code = $state((form?.code as string) ?? '');
-  let language = $state((form?.language as string) ?? 'javascript');
-  let description = $state((form?.description as string) ?? '');
-  let tagsRaw = $state((form?.tagsRaw as string) ?? '');
+  // State for form fields — initialized empty, updated from server on validation error
+  let title = $state('');
+  let code = $state('');
+  let language = $state('javascript');
+  let description = $state('');
+  let tagsRaw = $state('');
   let isPublic = $state(true);
   let submitting = $state(false);
+
+  // Repopulate fields when server returns form data (e.g., after validation error)
+  $effect(() => {
+    if (form) {
+      title = (form.title as string) ?? title;
+      code = (form.code as string) ?? code;
+      language = (form.language as string) ?? language;
+      description = (form.description as string) ?? description;
+      tagsRaw = (form.tagsRaw as string) ?? tagsRaw;
+    }
+  });
 </script>
 
 <svelte:head>
@@ -76,9 +88,10 @@
       </div>
 
       <div>
-        <label class="block text-sm font-medium text-zinc-300 mb-1.5">Visibilidade</label>
-        <label class="flex items-center gap-3 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2.5 cursor-pointer hover:border-zinc-600 transition-colors">
+        <span class="block text-sm font-medium text-zinc-300 mb-1.5">Visibilidade</span>
+        <label for="is_public" class="flex items-center gap-3 bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2.5 cursor-pointer hover:border-zinc-600 transition-colors">
           <input
+            id="is_public"
             type="checkbox"
             name="is_public"
             bind:checked={isPublic}
